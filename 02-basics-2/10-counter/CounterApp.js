@@ -28,7 +28,7 @@ export default defineComponent({
          :disabled="counter <= minValue"
       >➖</button>
 
-      <span class="count" data-testid="count">{{counter}}</span>
+      <span class="count" data-testid="count">{{ counter }}</span>
 
       <button
         class="button button--secondary"
