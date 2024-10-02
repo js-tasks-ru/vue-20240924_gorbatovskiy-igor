@@ -1,4 +1,4 @@
-import { computed, defineComponent, ref } from 'vue'
+import { defineComponent, ref } from 'vue'
 
 // Значения взяты из https://jsonplaceholder.typicode.com/comments
 export const emails = [
@@ -34,7 +34,6 @@ export default defineComponent({
 
   setup() {
     const inputValue = ref('')
-
     const isIncludes = email => email.includes(inputValue.value) && inputValue.value
 
     return { emails, inputValue, isIncludes }
