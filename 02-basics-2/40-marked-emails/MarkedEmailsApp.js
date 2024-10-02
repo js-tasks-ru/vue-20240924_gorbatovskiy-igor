@@ -35,11 +35,9 @@ export default defineComponent({
   setup() {
     const inputValue = ref('')
 
-    const getStyle = computed(() => email => {
-      return email.includes(inputValue.value) && inputValue.value !== '' ? 'marked' : ''
-    })
+    const isIncludes = email => email.includes(inputValue.value) && inputValue.value
 
-    return { emails, inputValue, getStyle }
+    return { emails, inputValue, isIncludes }
   },
 
   template: `
@@ -48,8 +46,8 @@ export default defineComponent({
         <input type="search" aria-label="Search" v-model="inputValue" />
       </div>
       <ul aria-label="Emails">
-        <li v-for="email in emails" :class="getStyle(email)">
-          {{email}}
+        <li v-for="email in emails" :class="{'marked': isIncludes(email)}">
+          {{ email }}
         </li>
       </ul>
     </div>
