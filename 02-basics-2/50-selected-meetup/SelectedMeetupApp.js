@@ -16,10 +16,6 @@ export default defineComponent({
       }
     })
 
-    const updateSelectedId = newId => {
-      selectedId.value = newId
-    }
-
     const incrementId = () => {
       selectedId.value++
     }
@@ -32,7 +28,6 @@ export default defineComponent({
       numbers,
       title,
       selectedId,
-      updateSelectedId,
       incrementId,
       decrementId,
     }
@@ -52,9 +47,8 @@ export default defineComponent({
               name="meetupId"
               :value="number"
               v-model="selectedId"
-              @click="updateSelectedId(number)"
             />
-            <label :for="'meetup-id-' + number" class="radio-group__label">{{number}}</label>
+            <label :for="'meetup-id-' + number" class="radio-group__label">{{ number }}</label>
           </div>
 
         </div>
@@ -64,7 +58,7 @@ export default defineComponent({
 
       <div class="meetup-selector__cover">
         <div class="meetup-cover">
-          <h1 class="meetup-cover__title">{{title}}</h1>
+          <h1 class="meetup-cover__title">{{ title }}</h1>
         </div>
       </div>
 
