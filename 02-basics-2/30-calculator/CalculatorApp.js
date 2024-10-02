@@ -52,7 +52,7 @@ export default defineComponent({
 
       <div>=</div>
 
-      <output>{{calculateResult}}</output>
+      <output>{{ calculateResult }}</output>
 
     </div>
   `,
