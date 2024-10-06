@@ -1,4 +1,4 @@
-import { defineComponent, ref, watch } from 'vue'
+import { defineComponent, ref, watch, onMounted } from 'vue'
 import { getMeetup } from './meetupsService.ts'
 
 export default defineComponent({
@@ -9,9 +9,14 @@ export default defineComponent({
     const title = ref('')
     const selectedId = ref(numbers.value[0])
 
-    watch(async () => {
-      if (selectedId.value) {
-        const data = await getMeetup(selectedId.value)
+    onMounted(async () => {
+      const data = await getMeetup(selectedId.value)
+      title.value = data.title
+    })
+
+    watch(selectedId, async (newId, oldId) => {
+      if (newId) {
+        const data = await getMeetup(newId)
         title.value = data.title
       }
     })
